@@ -73,6 +73,10 @@ main(int argc, char **argv)
 	cnt = -1;
 	device = NULL;
 
+#ifdef __OpenBSD__
+	unveil("/dev/", "r");
+#endif
+
 	memset(pack_num, 0, TNUM * sizeof(int));
 	
 	if ((cp = strrchr(argv[0], '/')) != NULL)
